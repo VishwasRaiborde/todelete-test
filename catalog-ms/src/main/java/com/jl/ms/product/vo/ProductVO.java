@@ -119,27 +119,7 @@ public class ProductVO implements Serializable {
 		return result;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ProductVO other = (ProductVO) obj;
-		if (productId == null) {
-			if (other.productId != null)
-				return false;
-		} else if (!productId.equals(other.productId))
-			return false;
-		if (reducedPrice == null) {
-			if (other.reducedPrice != null)
-				return false;
-		} else if (!reducedPrice.equals(other.reducedPrice))
-			return false;
-		return true;
-	}
+
 
 	@Override
 	public String toString() {
