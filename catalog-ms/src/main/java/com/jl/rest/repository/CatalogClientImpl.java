@@ -14,12 +14,23 @@ public class CatalogClientImpl implements CatalogClient {
 
 	@Autowired
 	RestTemplate restTemplate;
+	
+	//https://jl-nonprod-syst.apigee.net/v1/categories/600001506/products?key=2ALHCAAs6ikGRBoy6eTHA58RaG097Fma
 
-	private static final String URL = "https://jl-nonprod-syst.apigee.net/v1/categories/600001506/products?key=2ALHCAAs6ikGRBoy6eTHA58RaG097Fma";
+	private static final String URL = "https://jl-nonprod-syst.apigee.net/v1/categories/";
+	private static final String URL_VALUE = "/products?";
+	private static final String URL_KEY = "key=2ALHCAAs6ikGRBoy6eTHA58RaG097Fma";
+	
 
 	public List<Product> getProductCatalogById(int categoryId) {
+		StringBuilder builder = new StringBuilder();
+	    builder.append(URL) ;
+	    builder.append(categoryId);
+	    builder.append(URL_VALUE);
+	    builder.append(URL_KEY); 
+		
 
-		List<Product> products = restTemplate.getForObject(URL, ProductCatalogue.class).getProducts();
+	    List<Product> products = restTemplate.getForObject(builder.toString(), ProductCatalogue.class).getProducts();
 
 		return products;
 	}
